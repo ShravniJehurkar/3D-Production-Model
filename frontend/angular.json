@@ -1,0 +1,88 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "analytics": "0a38b9a5-b9c7-47f5-b3b0-7ad6cc9e1684"
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "beverage-plant-dashboard": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "outputPath": "dist/beverage-plant-dashboard",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+
+            "polyfills": ["zone.js"],
+
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+
+            "styles": [
+              "src/material-theme.scss",
+              "src/styles.css"
+            ],
+
+            "server": "src/main.server.ts",
+
+            "ssr": {
+              "entry": "src/server.ts"
+            },
+
+            "outputMode": "server",
+
+            "optimization": false,
+            "sourceMap": true,
+            "extractLicenses": false
+          },
+
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true,
+              "outputHashing": "all"
+            },
+
+            "development": {
+              "optimization": false,
+              "sourceMap": true
+            }
+          },
+
+          "defaultConfiguration": "development"
+        },
+
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "beverage-plant-dashboard:build:production"
+            },
+            "development": {
+              "buildTarget": "beverage-plant-dashboard:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    }
+  }
+}

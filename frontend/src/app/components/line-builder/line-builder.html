@@ -1,0 +1,210 @@
+<div class="page-wrapper">
+  <div class="menu-bar">
+    <div class="left-menu-logo">
+      <img src="/logo.png" alt="logo" class="left-menu-icon" aria-hidden="true" />
+  
+      <div class="left-menu-text">
+        ALTEN
+      </div>
+      <div class="dropdown-wrapper">
+        <div class="dropdown">
+          <button class="menu-btn">⚙️Processing</button>
+          <div class="dropdown-content">
+            <button (click)="startInitiation()"[class.active-process]="currentProcess === ProductionState.Initiation">Start Initiation</button>
+            <button (click)="startFilling()"[class.active-process]="currentProcess === ProductionState.Filling">Start Filling</button>
+            <button (click)="pauseProduction()" [class.active-process]="currentProcess === ProductionState.Paused">Pause</button>
+            <button (click)="startClosure()"[class.active-process]="currentProcess === ProductionState.Closure">Closure</button>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="menu-btn">View</button>
+          <div class="dropdown-content">
+            <button (click)="showFence()">Show Fence</button>
+            <button (click)="hideFence()">Hide Fence</button>
+            <button (click)="showWalkways()">Show Walkways</button>
+            <button (click)="hideWalkways()">Hide Walkways</button>
+          </div>
+        </div>
+      </div>
+      <div class="row button-row">
+  
+        <button class="action-btn-menu" (click)="undo()" >
+          ↶ Undo
+  
+        </button>
+  
+        <button class="action-btn-menu" (click)="redo()">
+  
+          ↷ Redo
+  
+        </button>
+  
+      </div>
+    </div>
+    <div class="right-menu">
+        <button class="toggle-btn" (click)="toggleTheme()">
+          {{ isDarkTheme ? '☀️' : '🌙' }}
+        </button>
+  
+        <button class="toggle-btn" (click)="toggleGrid()">
+          {{ showGrid ? 'Hide Grid' : 'Show Grid' }}
+        </button>
+    </div>
+  </div>
+  <div class="container">
+  
+    <!-- ================= SIDEBAR ================= -->
+  
+    <div class="builder-sidebar" [class.closed]="!sidebarOpen">
+
+      <div class="sidebar-toolbar">
+        Digital Twin Line
+      </div>
+  
+      <div class="sidebar-content">
+        <h3 class="section-title">Machine Editor</h3>
+        <div class="two-column-wrapper">
+          <div class="form-group">
+            <label for="machineId">Machine ID</label>
+            <input
+            id="machineId"
+            name="machineId"
+            type="text"
+            [(ngModel)]="machine.id"
+            placeholder=" ">
+          </div>
+  
+          <div class="form-group">
+            <label>Sequence Number</label>
+            <input type="number" [(ngModel)]="machine.sequence">
+          </div>
+        </div>
+  
+        <div class="form-group full-width">
+          <label for="machineType">Machine Type</label>
+          <select id="machineType" name="machineType" [(ngModel)]="machine.type">
+            <option value="Palletizer">Palletizer</option>
+            <option value="Labeler">Labeler</option>
+            <option value="Filler">Filler</option>
+            <option value="Capper">Capper</option>
+            <option value="CheckWeigher">CheckWeigher</option>
+            <option value="QualityStation">QualityStation</option>
+            <option value="TorqueStation">TorqueStation</option>
+            <option value="RoBoArm">RoBoArm</option>
+            <option value="Depalletizer">Depalletizer</option>
+            <option value="Stack">Stack</option>
+          </select>
+        </div>
+  
+        <div class="form-group full-width">
+          <label>Machine Name</label>
+          <input type="text" [(ngModel)]="machine.name">
+        </div>
+  
+        <div class="row three-column">
+          <div class="form-group">
+            <label>X Position</label>
+            <input type="number" [(ngModel)]="machine.x">
+          </div>
+
+          <div class="form-group">
+            <label>Z Position</label>
+            <input type="number" [(ngModel)]="machine.z">
+          </div>
+  
+          <div class="form-group">
+            <label>Rotation</label>
+            <input type="number" [(ngModel)]="machine.rotation" min="0" max="360" step="90">
+          </div>
+        </div>
+  
+        <div class="button-row">
+          <button class="action-btn" (click)="saveMachine()">
+            Save Machine
+          </button>
+
+          <button class="action-btn" (click)="updateMachine()">
+            Update Machine
+          </button>
+        </div>
+  
+        <div class="form-group full-width">
+
+          <label>Status</label>
+          <select [(ngModel)]="machine.status">
+            <option value="RUNNING">RUNNING</option>
+            <option value="STOPPED">STOPPED</option>
+            <option value="ALARM">ALARM</option>
+          </select>
+        </div>
+  
+        <h3 class="section-title">Alarm Control</h3>
+  
+        <div class="form-group full-width">
+          <label>Machine</label>
+          <select [(ngModel)]="selectedAlarmMachineId">
+            <option *ngFor="let m of machines" [value]="m.id">
+              {{m.name}}
+            </option>
+          </select>
+        </div>
+  
+        <div class="row alarm-row">
+          <div class="form-group duration-field">
+            <label>Duration (seconds)</label>
+            <input type="number" min="1" [(ngModel)]="alarmDuration">
+          </div>
+  
+          <button class="action-btn alarm-btn" (click)="startAlarm()" style="margin-top: 16px;">
+            Start Alarm
+          </button>
+        </div>
+  
+        <button class="delete-btn" (click)="deleteSelectedMachine()"
+          [disabled]="!selectedMachineId">
+          Delete Selected Machine
+        </button>
+  
+        <h3 class="section-title">
+          Production Lines
+        </h3>
+  
+        <div class="form-group full-width">
+          <label>Production Line Name</label>
+          <input type="text" [(ngModel)]="activeDesignName">
+        </div>
+  
+        <div class="button-row">
+          <button class="action-btn" (click)="saveDesign()">
+            Save Line
+          </button>
+
+          <button class="action-btn" (click)="newDesign()">
+            New Line
+          </button>
+        </div>
+  
+        <button class="delete-btn" (click)="deleteDesign()">
+          Delete Production Line
+        </button>
+  
+        <div class="form-group full-width">
+          <label>Saved Production Lines</label>
+          <select [(ngModel)]="activeDesignId" (change)="onDesignSelected($any($event.target).value)">
+            <option *ngFor="let d of designs" [value]="d.id">
+              {{d.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+    <button class="toggle-btn-nav" [class.closed]="!sidebarOpen" (click)="toggleSidebar()" style="font-family: Arial, Helvetica, sans-serif;">
+      {{ !sidebarOpen ? '⮞' : '⮜'}}
+    </button>
+  
+    <div class="main-content">
+      <div #rendererContainer class="three-container"></div>
+    </div>
+  </div>
+</div>

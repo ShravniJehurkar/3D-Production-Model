@@ -1,0 +1,304 @@
+{
+  "designs": {
+    "8059282b-eca5-42d5-a23a-8684bd0624df": {
+      "id": "8059282b-eca5-42d5-a23a-8684bd0624df",
+      "name": "eg1",
+      "machines": [
+        {
+          "id": "p1",
+          "name": "pal",
+          "type": "Palletizer",
+          "sequence": 1,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -50,
+          "z": 0,
+          "status": "ALARM"
+        },
+        {
+          "id": "p1P",
+          "name": "palJII",
+          "type": "Palletizer",
+          "sequence": 2,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -50,
+          "z": 30,
+          "status": "STOPPED"
+        },
+        {
+          "id": "p1Psa",
+          "name": "palJIIsas",
+          "type": "Palletizer",
+          "sequence": 3,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -50,
+          "z": 60,
+          "status": "STOPPED"
+        }
+      ],
+      "createdAt": 1782890216501,
+      "updatedAt": 1782890216501
+    },
+    "b71036c7-58df-41c8-b134-e722a2bc8be6": {
+      "id": "b71036c7-58df-41c8-b134-e722a2bc8be6",
+      "name": "EG2",
+      "machines": [
+        {
+          "id": "p1",
+          "name": "pal",
+          "type": "Palletizer",
+          "sequence": 1,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -75,
+          "z": 0,
+          "status": "ALARM"
+        },
+        {
+          "id": "p2",
+          "name": "lab",
+          "type": "Labeler",
+          "sequence": 2,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -50,
+          "z": 20,
+          "status": "ALARM"
+        },
+        {
+          "id": "p3",
+          "name": "fil",
+          "type": "Filler",
+          "sequence": 3,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -25,
+          "z": 0,
+          "status": "ALARM"
+        },
+        {
+          "id": "p4",
+          "name": "cap",
+          "type": "Capper",
+          "sequence": 4,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 10,
+          "z": 0,
+          "status": "ALARM"
+        },
+        {
+          "id": "p5",
+          "name": "cw",
+          "type": "CheckWeigher",
+          "sequence": 5,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 45,
+          "z": 0,
+          "status": "ALARM"
+        },
+        {
+          "id": "p6",
+          "name": "qs",
+          "type": "QualityStation",
+          "sequence": 6,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 45,
+          "z": 30,
+          "status": "RUNNING"
+        },
+        {
+          "id": "p7",
+          "name": "ts",
+          "type": "TorqueStation",
+          "sequence": 7,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 5,
+          "z": 30,
+          "status": "ALARM"
+        },
+        {
+          "id": "p8",
+          "name": "robo",
+          "type": "RoBoArm",
+          "sequence": 8,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -25,
+          "z": 30,
+          "status": "STOPPED"
+        },
+        {
+          "id": "p9",
+          "name": "DP",
+          "type": "Depalletizer",
+          "sequence": 9,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -55,
+          "z": 50,
+          "status": "ALARM"
+        },
+        {
+          "id": "p10",
+          "name": "ST",
+          "type": "Stack",
+          "sequence": 10,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -80,
+          "z": 50,
+          "status": "RUNNING"
+        }
+      ],
+      "createdAt": 1782461240394,
+      "updatedAt": 1782461240394
+    },
+    "bbc06c1c-c9b8-497d-8b70-b906c9678971": {
+      "id": "bbc06c1c-c9b8-497d-8b70-b906c9678971",
+      "name": "L Production Line",
+      "machines": [
+        {
+          "id": "P1",
+          "name": "PALLETIZER",
+          "type": "Palletizer",
+          "sequence": 1,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -75,
+          "z": -40,
+          "status": "ALARM"
+        },
+        {
+          "id": "P2",
+          "name": "LABELER",
+          "type": "Labeler",
+          "sequence": 2,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -40,
+          "z": -40,
+          "status": "RUNNING"
+        },
+        {
+          "id": "P3",
+          "name": "FILLER",
+          "type": "Filler",
+          "sequence": 3,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 0,
+          "z": -40,
+          "status": "ALARM"
+        },
+        {
+          "id": "P4",
+          "name": "CAPPER",
+          "type": "Capper",
+          "sequence": 4,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 35,
+          "z": -40,
+          "status": "ALARM"
+        },
+        {
+          "id": "P5",
+          "name": "CHECKWEIGHER",
+          "type": "CheckWeigher",
+          "sequence": 5,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 75,
+          "z": -40,
+          "status": "STOPPED"
+        },
+        {
+          "id": "P6",
+          "name": "QUALITYSTATION",
+          "type": "QualityStation",
+          "sequence": 6,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 75,
+          "z": 40,
+          "status": "STOPPED"
+        },
+        {
+          "id": "P7",
+          "name": "TORQUESTATION",
+          "type": "TorqueStation",
+          "sequence": 7,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 30,
+          "z": 40,
+          "status": "ALARM"
+        },
+        {
+          "id": "P8",
+          "name": "ROBOARM",
+          "type": "RoBoArm",
+          "sequence": 8,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": 0,
+          "z": 40,
+          "status": "ALARM"
+        },
+        {
+          "id": "P9",
+          "name": "DEPALLETIZER",
+          "type": "Depalletizer",
+          "sequence": 9,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -50,
+          "z": 40,
+          "status": "ALARM"
+        },
+        {
+          "id": "P10",
+          "name": "STACK",
+          "type": "Stack",
+          "sequence": 10,
+          "length": 2,
+          "width": 2,
+          "height": 2,
+          "x": -80,
+          "z": 40,
+          "status": "RUNNING"
+        }
+      ],
+      "createdAt": 1784873092498,
+      "updatedAt": 1784873092498
+    }
+  }
+}

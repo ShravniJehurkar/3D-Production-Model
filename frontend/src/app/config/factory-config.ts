@@ -1,0 +1,17 @@
+export const FACTORY_CONFIG = {
+
+    FLOOR_HEIGHT: 0.25,
+
+    CONVEYOR_HEIGHT: 1.55,
+
+    CONVEYOR_WIDTH: 4,
+
+    WALKWAY_WIDTH: 6,
+
+    SAFETY_OFFSET: 3,
+
+    FACTORY_WIDTH: 240,
+
+    FACTORY_DEPTH: 160
+
+};
